@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/10 13:51:55 by ezanette          #+#    #+#             */
-/*   Updated: 2024/01/10 13:52:25 by ezanette         ###   ########.fr       */
+/*   Created: 2024/01/17 12:39:02 by ezanette          #+#    #+#             */
+/*   Updated: 2024/01/17 12:40:06 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stddef.h>
 #include <libft.h>
 
-void	*ft_memcpy(void *dst, const void *src, size_t n)
+void	*ft_memchr(const void *ptr, int value, size_t n)
 {
-	void	*d;
-
-	d = dst;
-	while (n-- != 0)
+	while (n--)
 	{
-		*(char *)dst++ = *(char *)src++;
+		if (*(char *)ptr == value)
+			return ((void *)ptr);
+		ptr++;
 	}
-	return (d);
+	return (0);
 }

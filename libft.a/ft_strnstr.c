@@ -1,39 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memmove.c                                       :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/11 11:19:57 by ezanette          #+#    #+#             */
-/*   Updated: 2024/01/11 11:47:26 by ezanette         ###   ########.fr       */
+/*   Created: 2024/01/17 14:54:02 by ezanette          #+#    #+#             */
+/*   Updated: 2024/01/17 15:00:11 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <libft.h>
+#include <stdio.h>
+#include <stddef.h>
 
-void	*ft_memmove(void *dst, const void *src, size_t n)
+char	*ft_strnstr(const char *body, const char *to_find, size_t len)
 {
-	char	*d;
-	const char	*s;
+	size_t	i;
+	size_t	j;
 
-	d = (char *)dst;
-	s = (char *)src;
-	if (dst < src)
+	if (!body || !to_find)
+		return (NULL);
+	if (!to_find || !to_find[0])
+		return ((char *)body);
+	i = 0;
+	while (body[i] && i < len)
 	{
-		while (n--)
+		j = 0;
+		while (body[i + j] && to_find[j]
+			&& i + j < len && body[i + j] == to_find[j])
 		{
-			*d++ = *s++;
+			j++;
+			if (!to_find[j])
+				return ((char *)(body + i));
 		}
+		i++;
 	}
-	else
-	{
-		d += n;
-		s += n;
-		while (n--)
-		{
-			*d-- = *s--;
-		}
-	}
-	return (dst);
+	return (NULL);
 }
