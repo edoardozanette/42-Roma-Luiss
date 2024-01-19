@@ -5,7 +5,7 @@ char    *ft_strdup(const char *s)
     char *a;
     char *res;
 
-    a = (char *)malloc((strlen(s) + 1)* sizeof(char));
+    a = (char *)malloc((ft_strlen(s) + 1)* sizeof(char));
     //if (res != NULL)
     res = a;
 
