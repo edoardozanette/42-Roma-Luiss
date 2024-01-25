@@ -34,6 +34,7 @@ void	*ft_memmove(void *dst, const void *src, size_t n);
 void	*ft_memset(void *str, int c, size_t n);
 void	*ft_memchr(const void *ptr, int value, size_t n);
 void    *ft_calloc(size_t num, size_t size)
+void    **ft_split(char *string, const char *delimiter);
 char    *ft_strchr(const char *str, int character);
 char	*ft_strrchr(const char *str, int character);
 char	*ft_strnstr(const char *body, const char *to_find, size_t len);

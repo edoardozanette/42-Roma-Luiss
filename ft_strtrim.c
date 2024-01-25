@@ -17,7 +17,7 @@ static int control_char(char a, char *to_check)
         return (0);
     }
 
-char *ft_strtrim(char const *s1, char const *set)
+char *ft_strtrim(const char *s1, const char *set)
 {
     char *res;
     int start;
