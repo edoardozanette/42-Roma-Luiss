@@ -18,7 +18,7 @@ static size_t	get_word(const char *s, char c)
         else
         {
             s++;
-        }
+        } 
         return (ret);
     }
 }
