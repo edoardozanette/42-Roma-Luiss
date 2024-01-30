@@ -1,7 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-//#include "libft.h"
+#include "libft.h"
   
 static int control_char(char a, char *to_check)
     {
@@ -33,7 +30,7 @@ char *ft_strtrim(const char *s1, const char *set)
     {
        start++;
     }
-    end = strlen(s1);
+    end = ft_strlen(s1);
     while (control_char(s1[end - 1], (char *)set))
     {
         end--;

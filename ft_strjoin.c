@@ -1,6 +1,6 @@
-#include ¨libfr.h¨
+#include "libft.h"
 
-char *strjoin(const char *s1, const char *s2)
+char *ft_strjoin(const char *s1, const char *s2)
 {
     size_t len1 = ft_strlen(s1);
     size_t len2 = ft_strlen(s2);

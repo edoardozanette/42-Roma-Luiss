@@ -3,8 +3,9 @@
 static size_t	get_word(const char *s, char c)
 {
     size_t	ret;
-
 	ret = 0;
+    if (!s)
+        return (0);
     while (*s)
     {
         if (*s != c)
@@ -18,9 +19,10 @@ static size_t	get_word(const char *s, char c)
         else
         {
             s++;
-        } 
+        }
         return (ret);
     }
+    return (0);
 }
 
 char **ft_split(char *s, char c)
@@ -44,7 +46,7 @@ char **ft_split(char *s, char c)
                 {
                     s++;
                 }
-            res[i++] = ft_substr(s - k, 0, k);
+            res[i++] = ft_substr((s - k), 0, k);
         }
         else
         {
