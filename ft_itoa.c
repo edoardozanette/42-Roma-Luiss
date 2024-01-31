@@ -1,4 +1,5 @@
 #include "libft.h"
+#include <stdio.h>
 
 int num;
 
@@ -7,7 +8,7 @@ static size_t ft_len(int n)
     size_t i;
     
     i = 0;
-    if (n < 0)
+    if (n <= 0)
         i++;
    while (n)
     { 
@@ -26,7 +27,7 @@ static char *control_n(char *res, int n)
     else if (n < 0)
     {
         res[0] = '-';
-        n *= -1;
+        num *= -1;
     }
     return (res);
 }
@@ -42,7 +43,7 @@ char *ft_itoa(int n)
     res = malloc(len * sizeof(char));
     if (!res)
         return (0);
-    control_if(res, num);
+    control_n(res, num);
     res[i - 1] = '\0';
     len -= 2;
     while(num > 0)
@@ -56,7 +57,7 @@ char *ft_itoa(int n)
 
 int main()
 {
-    int n = 2345;
+    int n = 0;
     char *res = ft_itoa(n);
     printf("risultato: %s\n", res);
 }
