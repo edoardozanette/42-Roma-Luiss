@@ -1,6 +1,8 @@
 #include "libft.h"
 
-size_t ft_len(int n)
+int num;
+
+static size_t ft_len(int n)
 {
     size_t i;
     
@@ -15,17 +17,18 @@ size_t ft_len(int n)
     return (i + 1);
 }
 
-control_n(int n)
+static char *control_n(char *res, int n)
 {
     if (n == 0)
     {
         res[0] = '0';
-        return (res);
     }
-    if (n < 0)
+    else if (n < 0)
     {
         res[0] = '-';
+        n *= -1;
     }
+    return (res);
 }
 char *ft_itoa(int n)
 {
@@ -33,27 +36,19 @@ char *ft_itoa(int n)
     size_t i;
     char *res;
 
-    len = ft_len(n);
+    num = n;
+    len = ft_len(num);
     i = len;
     res = malloc(len * sizeof(char));
     if (!res)
         return (0);
+    control_if(res, num);
     res[i - 1] = '\0';
-    if (n == 0)
-    {
-        res = '0';
-        return (res);
-    }
-    if (n < 0)
-    {
-        res[0] = '-';
-        n *= -1;
-    }
     len -= 2;
-    while(n > 0)
+    while(num > 0)
     {
-        res[len] = (n % 10) + '0';
-        n /= 10;
+        res[len] = (num % 10) + '0';
+        num /= 10;
         len--;
     }
     return (res);
