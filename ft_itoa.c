@@ -53,3 +53,10 @@ char *ft_itoa(int n)
     }
     return (res);
 }
+
+int main()
+{
+    int n = 2345;
+    char *res = ft_itoa(n);
+    printf("risultato: %s\n", res);
+}
