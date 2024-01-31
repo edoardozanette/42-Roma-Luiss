@@ -38,9 +38,10 @@ char    *ft_strchr(const char *str, int character);
 char	*ft_strrchr(const char *str, int character);
 char	*ft_strnstr(const char *body, const char *to_find, size_t len);
 char    *ft_strdup(const char *s);
-char    *strjoin(const char *s1, const char *s2);
+char    *ft_strjoin(const char *s1, const char *s2);
 char    *ft_strtrim(char const *s1, char const *set);
 char    **ft_split(char *s, char c);
 char    *ft_substr(char const *s, unsigned int start, size_t len);
 char    *ft_strjoin(const char *s1, const char *s2);
+char    *ft_strmapi(char const *s, char (*f)(unsigned int, char));
 #endif 
