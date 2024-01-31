@@ -1,5 +1,4 @@
 #include "libft.h"
-#include <stdio.h>
 
 int num;
 
@@ -53,11 +52,4 @@ char *ft_itoa(int n)
         len--;
     }
     return (res);
-}
-
-int main()
-{
-    int n = 0;
-    char *res = ft_itoa(n);
-    printf("risultato: %s\n", res);
 }
