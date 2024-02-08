@@ -11,8 +11,8 @@ char *ft_strjoin(const char *s1, const char *s2)
 
     if (res != NULL)
     {
-        ft_strlcpy(res, s1, len1);
-        ft_strlcpy(res, s2, len2);
+        ft_strlcpy(res, s1, len1 + 1);
+        ft_strlcpy(res + len1, s2, len2 + 1);
         return (res);
     }
     return (NULL);

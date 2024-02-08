@@ -26,16 +26,16 @@ char *ft_strtrim(const char *s1, const char *set)
         return (NULL);
     }
     start = 0;
-    while (control_char(s1[start], (char *)set))
+    while (s1[start] && control_char(s1[start], (char *)set))
     {
        start++;
     }
     end = ft_strlen(s1);
-    while (control_char(s1[end - 1], (char *)set))
+    while (end > start && control_char(s1[end - 1], (char *)set))
     {
         end--;
     }
-    res = (char *)malloc((end - start) * sizeof(char));
+    res = (char *)malloc((end - start + 1) * sizeof(char));
     if (res != NULL)
     {
         i = 0;
@@ -46,7 +46,7 @@ char *ft_strtrim(const char *s1, const char *set)
             start++;
         }
         res[i - 1] = '\0';
-        return (res);
+        return ((char *)res);
     }
     return (NULL);
 }

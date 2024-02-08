@@ -1,28 +1,30 @@
 #include "libft.h"
-#include <stdlib.h>
-static size_t	get_word(const char *s, char c)
+
+static size_t get_word(const char *s, char c)
 {
-    size_t	ret;
-	ret = 0;
+    size_t ret = 0;
+    
     if (!s)
         return (0);
+    
     while (*s)
     {
         if (*s != c)
         {
             ret++;
-            while (*s && *s !=c)
+            while (*s && *s != c)
             {
-                    s++;
+                s++;
             }
         }
         else
         {
             s++;
         }
-        return (ret);
+        if (!*s)
+            break;
     }
-    return (0);
+    return (ret);
 }
 
 char **ft_split(char *s, char c)
@@ -42,9 +44,10 @@ char **ft_split(char *s, char c)
         if (*s != c)
         {
             k = 0;
-            while (*s && *s != c && k++)
+            while (*s && *s != c)
                 {
                     s++;
+                    k++;
                 }
             res[i++] = ft_substr((s - k), 0, k);
         }

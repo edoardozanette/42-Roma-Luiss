@@ -1,7 +1,5 @@
 #include "libft.h"
 
-int num;
-
 static size_t ft_len(int n)
 {
     size_t i;
@@ -35,7 +33,8 @@ char *ft_itoa(int n)
     size_t len;
     size_t i;
     char *res;
-
+    long int num;
+    
     num = n;
     len = ft_len(num);
     i = len;

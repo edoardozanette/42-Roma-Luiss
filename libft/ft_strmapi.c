@@ -8,12 +8,14 @@ char *ft_strmapi(char const *s, char (*f)(unsigned int, char))
 
     i = 0;
     len = ft_strlen(s);
-    res = malloc((len + 1) * sizeof(char));
+    res = (char *)malloc((len + 1) * sizeof(char));
+    if(!res)
+        return NULL;
     while (s[i] != '\0')
     {
         res[i] = (*f)(i, (char)s[i]);
         i++;
     }
-    res[len + 1] = '\0';
+    res[i] = '\0';
     return (res);
 }
