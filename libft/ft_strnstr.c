@@ -10,19 +10,19 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
-#include <stdio.h>
-#include <stddef.h>
+#include "libft.h"
 
 char	*ft_strnstr(const char *body, const char *to_find, size_t len)
 {
 	size_t	i;
 	size_t	j;
 
-	if (!body || !to_find)
+	if (!body && !to_find)
 		return (NULL);
-	if (!to_find || !to_find[0])
+	if (!to_find[0])
 		return ((char *)body);
+	if (len == 0)
+		return (NULL);
 	i = 0;
 	while (body[i] && i < len)
 	{

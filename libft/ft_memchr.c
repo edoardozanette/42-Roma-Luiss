@@ -6,20 +6,24 @@
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 12:39:02 by ezanette          #+#    #+#             */
-/*   Updated: 2024/01/17 12:40:06 by ezanette         ###   ########.fr       */
+/*   Updated: 2024/02/09 18:26:34 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stddef.h>
-#include <libft.h>
+#include "libft.h"
 
-void	*ft_memchr(const void *ptr, int value, size_t n)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	while (n--)
+	char	*str;
+	size_t	i;
+
+	i = 0;
+	str = (char *)s;
+	while (i < n)
 	{
-		if (*(char *)ptr == value)
-			return ((void *)ptr);
-		ptr++;
+		if ((unsigned char)str[i] == (unsigned char)c)
+			return ((char *)s + i);
+		i++;
 	}
-	return (0);
+	return (NULL);
 }

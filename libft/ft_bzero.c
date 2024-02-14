@@ -6,11 +6,11 @@
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:40:22 by ezanette          #+#    #+#             */
-/*   Updated: 2024/01/10 13:15:27 by ezanette         ###   ########.fr       */
+/*   Updated: 2024/02/09 18:24:55 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <libft.h>
+#include "libft.h"
 
 void	ft_bzero(void *str, size_t n)
 {

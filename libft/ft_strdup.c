@@ -6,7 +6,7 @@
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/26 16:41:51 by ezanette          #+#    #+#             */
-/*   Updated: 2024/01/26 16:56:51 by ezanette         ###   ########.fr       */
+/*   Updated: 2024/02/09 17:46:18 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ char	*ft_strdup(const char *s)
 	char	*res;
 
 	a = (char *)malloc((ft_strlen(s) + 1) * sizeof(char));
+	if (!a)
+		return (NULL);
 	res = a;
 	while (*s)
 	{
