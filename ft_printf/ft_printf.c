@@ -1,7 +1,7 @@
 int	flag(const char type, va_list curr_param)
 {
 	if (type == 'c')
-		return (print_char(curr_param));
+		return (ft_printchar(curr_param));
 	else if (type == 's')
 		return (ft_putstr(va_arg(curr_param, char *)));
 	else if (type == 'p')
