@@ -1,4 +1,4 @@
-int ft_putstr(char *s, int fd)
+int ft_putstr(char *s)
 {
     int i;
 
