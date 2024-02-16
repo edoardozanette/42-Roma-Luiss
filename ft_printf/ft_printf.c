@@ -1,17 +1,17 @@
-int	flag(const char type, va_list curr_param)
+#include "ft_printf.h"
+
+static int	flag(const char type, va_list curr_param)
 {
 	if (type == 'c')
-		return (ft_printchar(curr_param));
+		return (ft_putchar(va_arg(curr_param, int)));
 	else if (type == 's')
 		return (ft_putstr(va_arg(curr_param, char *)));
 	else if (type == 'p')
-		return (ptr_print(va_arg(curr_param, unsigned long long)));
-	else if (type == 'd')
-		return (ft_putnbr(va_arg(curr_param, int)));
-	else if (type == 'i')
+		return (ft_ptrprint(va_arg(curr_param, unsigned long)));
+	else if (type == 'd' || type == 'i')
 		return (ft_putnbr(va_arg(curr_param, int)));
 	else if (type == 'u')
-		return (ft_put_unsigned_nbr(va_arg(curr_param, unsigned int)));
+		return (ft_put_u_nbr(va_arg(curr_param, unsigned int)));
 	else if (type == 'x' || type == 'X')
 		return (ft_print_hex(va_arg(curr_param, unsigned int), type));
 	else if (type == '%')
@@ -25,20 +25,20 @@ int ft_printf(const char *s, ...)
     int i;
     int count;
 
-    i = -1;
+    i = 0;
     count = 0;
     va_start(args, s);
-    while (s[++i])
+    while (s[i])
     {
         if (s[i] == '%')
         {
             i++;
-            count += flag(s[i], agrs);
+            count += flag(s[i], args);
             i++;       
         }
-        if (!a[i])
+        if (!s[i])
             return (count);
-        if  (a[i] != '%')
+        if  (s[i] != '%')
         {
             count++;
             ft_putchar(s[i]);
