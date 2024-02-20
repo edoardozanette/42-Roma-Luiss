@@ -21,6 +21,7 @@ static int	samechar_p(char *base)
 	}
 	return 0;
 }
+
 //void	printnbr
 static long int     printnbr_p(int nbr, int base_value, char *base)
 {
@@ -55,3 +56,13 @@ long int	ft_ptrprint(unsigned nbr)
 	count += printnbr_p(nbr, i, base);
     return (count);
 }
+/*
+long int	ft_ptrprint(unsigned nbr)
+{
+	uintptr_t i = &nbr;
+	int count;
+
+	count = 0;
+	count += printnbr_p(i, 16, "0123456789abcdef");
+	return (count);
+}*/
