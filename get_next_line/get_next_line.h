@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 
+#  define BUFFER_SIZE 20
 # endif
 
 # include <unistd.h>
@@ -25,4 +25,5 @@
 
 char    *get_next_line(int fd);
 void	*ft_calloc(size_t num, size_t size);
+
 #endif

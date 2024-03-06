@@ -14,12 +14,24 @@
 
 char *get_next_line(int fd)
 {
-	int     bytes_read;
-	char    *cup_buffer;
+	char	buffer[BUFFER_SIZE + 1];
+	char	*line;
+	int		exit;
 
-	cup_buffer = ft_calloc(3 + 1 * sizeof(char)); 
-	if (!cup_buffer)
-		return NULL;
-	bytes_read = read(fd, cup_buffer, 3) ;
-	return (cup_buffer);
+	line = NULL;
+	buffer[BUFFER_SIZE] = 0;
+	exit = 1;
+	while (!ft_strchr(line, '\n'))
+	{
+		if (isempty(buffer) == 1)
+			exit = read(fd, buffer, BUFFER_SIZE);
+		if (exit <= 0)
+			break;
+	line = ft_realloc(line);
+	bufcat(line, buffer);
+	}
+	if (line && *line)
+		return (line);
+	free(line);
+	return (NULL);
 }
