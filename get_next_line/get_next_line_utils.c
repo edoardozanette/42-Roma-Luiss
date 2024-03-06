@@ -6,25 +6,23 @@
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/28 15:35:23 by ezanette          #+#    #+#             */
-/*   Updated: 2024/02/28 15:35:23 by ezanette         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:28:38 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-void	*ft_calloc(size_t num, size_t size)
+char	*ft_calloc(size_t num, size_t size)
 {
-	void	*ptr;
+	char	*ptr;
 	int		n;
 
 	n = num * size;
-	if (num && size && 4294967295U / size <= num)
-		return (0);
 	ptr = malloc(num * size);
 	if (ptr != NULL)
 	{
 		while (n--)
-			*(char *)ptr++ = 0;
+			*ptr++ = 0;
 	}
 	return (ptr);
 }
@@ -38,15 +36,15 @@ void	bufcat(char *dest, char *src)
 	i = 0;
 	while (dest[i])
 		i++;
-	while (!src[j])
+	while (i <= BUFFER_SIZE && !src[j])
 		j++;
 	while (src[j])
 	{
-		dst[i] = src[j];
+		dest[i] = src[j];
 		src[j] = 0;
 		j++;
 		i++;
-		if (dst[i - 1] == '\n')
+		if (dest[i - 1] == '\n')
 			break;
 	}
 }
@@ -60,6 +58,7 @@ int isempty(char *buffer)
 	{
 		if (buffer[i] != 0)
 			return (1);
+		i++;
 	}
 	return (0);
 }
@@ -86,9 +85,9 @@ char	*ft_realloc(char *line)
 	res = ft_calloc(ft_strlen(line) + BUFFER_SIZE + 1, sizeof(char));
 	if (line)
 	{
-	while (line)
-		*res++ = *line++;
-	free(line);
+		while (line)
+			*res++ = *line++;
+		//free(line);
 	}
 	return (res);
 }
@@ -98,8 +97,8 @@ size_t	ft_strlen(const char *s)
 	
 	int	i;
 
-	if (!str)
-		return (NULL);
+	if (!s)
+		return (0);
 	i = 0;
 	while (*s)
 	{

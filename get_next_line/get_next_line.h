@@ -6,7 +6,7 @@
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/06 16:01:42 by ezanette          #+#    #+#             */
-/*   Updated: 2024/03/06 16:01:42 by ezanette         ###   ########.fr       */
+/*   Updated: 2024/03/06 18:29:02 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 char    *get_next_line(int fd);
 char	*ft_strchr(const char *str, int character);
 char	*ft_realloc(char *line);
-void	*ft_calloc(size_t num, size_t size);
+char	*ft_calloc(size_t num, size_t size);
 void	bufcat(char *dest, char *src);
 int 	isempty(char *buffer);
 size_t	ft_strlen(const char *s);
