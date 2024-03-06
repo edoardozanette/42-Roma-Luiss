@@ -24,6 +24,10 @@
 # include <stdio.h>
 
 char    *get_next_line(int fd);
+char	*ft_strchr(const char *str, int character);
+char	*ft_realloc(char *line);
 void	*ft_calloc(size_t num, size_t size);
-
+void	bufcat(char *dest, char *src);
+int 	isempty(char *buffer);
+size_t	ft_strlen(const char *s);
 #endif
