@@ -12,98 +12,86 @@
 
 #include "get_next_line.h"
 
-char	*ft_calloc(size_t num, size_t size)
+void	*ft_calloc(size_t num, size_t size)
 {
-	char	*ptr;
-	int		n;
+	void	*ptr;
+	size_t		n;
 
-	n = num * size;
 	ptr = malloc(num * size);
-	if (ptr != NULL)
+	if (ptr == NULL)
+		return (ptr);
+	n = 0;
+	while (n < num * size)
 	{
-		while (n--)
-			*ptr++ = 0;
+		((unsigned char *)ptr)[n] = '\0';
+		n++;
 	}
 	return (ptr);
 }
 
-void	bufcat(char *dest, char *src)
+void	ft_strcat(char *dest, char *src)
 {
-	int	j;
-	int	i;
+	unsigned int	i;
+	unsigned int	j;
 
-	j = 0;
 	i = 0;
-	while (dest[i])
+	j = 0;
+	while (dest[i] != '\0')
 		i++;
-	while (i <= BUFFER_SIZE && !src[j])
-		j++;
-	while (src[j])
+	while (src[j] != '\0')
 	{
 		dest[i] = src[j];
 		src[j] = 0;
-		j++;
 		i++;
-		if (dest[i - 1] == '\n')
-			break;
+		j++;
 	}
+	dest[i] = '\0';
 }
 
-int isempty(char *buffer)
+void	bufcat(char *dest, char *src)
 {
-	int i;
+	unsigned int	i;
+	unsigned int	j;
 
 	i = 0;
-	while (i <= BUFFER_SIZE)
-	{
-		if (buffer[i] != 0)
-			return (1);
+	j = 0;
+	while (dest[i] != '\0')
 		i++;
-	}
-	return (0);
-}
-
-char	*ft_strchr(const char *str, int character)
-{
-	if (!str)
-		return (NULL);
-	while ((char)character != *str)
+	while (src[j] != '\0')
 	{
-		if (*str == '\0')
-		{
-			return (0);
-		}
-		str++;
+		dest[i + j] = src[j];
+		src[j] = 0;
+		j++;
+		if (dest[i + j - 1] == '\n')
+			break ;
 	}
-	return ((char *)str);
+	if (src[j])
+		ft_strcat(src, src + j);
 }
 
-char	*ft_realloc(char *line)
+char	*ft_strchr(const char *s, int c)
 {
-	char *res;
-
-	res = ft_calloc(ft_strlen(line) + BUFFER_SIZE + 1, sizeof(char));
-	if (line)
-	{
-		while (line)
-			*res++ = *line++;
-		//free(line);
-	}
-	return (res);
-}
-
-size_t	ft_strlen(const char *s)
-{
-	
 	int	i;
+
+	if (s == NULL)
+		return (NULL);
+	i = 0;
+	while (s[i] != '\0' && s[i] != (char)c)
+		i++;
+	if (s[i] == (char)c)
+		return ((char *)(s + i));
+	else
+		return (NULL);
+}
+
+size_t ft_strlen(const char *s)
+{
+	size_t	i;
 
 	if (!s)
 		return (0);
 	i = 0;
-	while (*s)
-	{
+	while (s[i] != '\0')
 		i++;
-		s++;
-	}
 	return (i);
 }

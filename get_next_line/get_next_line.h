@@ -14,7 +14,7 @@
 # define GET_NEXT_LINE_H
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 20
+#  define BUFFER_SIZE 5
 # endif
 
 # include <unistd.h>
@@ -24,10 +24,12 @@
 # include <stdio.h>
 
 char    *get_next_line(int fd);
-char	*ft_strchr(const char *str, int character);
+char	*ft_strchr(const char *s, int c);
 char	*ft_realloc(char *line);
-char	*ft_calloc(size_t num, size_t size);
+void	*ft_calloc(size_t num, size_t size);
 void	bufcat(char *dest, char *src);
 int 	isempty(char *buffer);
-size_t	ft_strlen(const char *s);
+size_t ft_strlen(const char *s);
+void	ft_strcat(char *dest, char *src);
+
 #endif
