@@ -1,43 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_struct.h                                   :+:      :+:    :+:   */
+/*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 14:59:31 by ezanette          #+#    #+#             */
-/*   Updated: 2024/06/04 17:38:50 by ezanette         ###   ########.fr       */
+/*   Created: 2024/01/26 16:29:39 by ezanette          #+#    #+#             */
+/*   Updated: 2024/02/09 17:42:28 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_STRUCT_H
-# define SO_LONG_STRUCT_H
+#include "libft.h"
 
-typedef struct s_obj
+void	*ft_calloc(size_t num, size_t size)
 {
-	int		x_axis;
-	int		y_axis;
-	int		stat;
-}	t_obj;
+	void	*ptr;
 
-typedef struct s_map
-{
-	int		move;
-	int		ncoin;
-	int		nport;
-	int		nexit;
-	int		nenemy;
-	t_obj	enemy;
-	t_obj	enter;
-	t_obj	exit;
-}	t_map;
-
-typedef struct s_start
-{
-	t_map	map;
-	int		max_x;
-	int		max_y;
-	char	**matrix;
-}	t_start;
-
-#endif
+	if (num && size && 4294967295U / size <= num)
+		return (0);
+	ptr = malloc(num * size);
+	if (ptr != NULL)
+		ft_bzero(ptr, (num * size));
+	return (ptr);
+}

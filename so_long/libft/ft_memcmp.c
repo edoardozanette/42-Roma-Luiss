@@ -1,43 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_struct.h                                   :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 14:59:31 by ezanette          #+#    #+#             */
-/*   Updated: 2024/06/04 17:38:50 by ezanette         ###   ########.fr       */
+/*   Created: 2024/01/17 12:40:48 by ezanette          #+#    #+#             */
+/*   Updated: 2024/02/09 18:27:08 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_STRUCT_H
-# define SO_LONG_STRUCT_H
+#include "libft.h"
 
-typedef struct s_obj
+int	ft_memcmp(const void *ptr1, const void *ptr2, size_t n)
 {
-	int		x_axis;
-	int		y_axis;
-	int		stat;
-}	t_obj;
+	const unsigned char	*str1;
+	const unsigned char	*str2;
 
-typedef struct s_map
-{
-	int		move;
-	int		ncoin;
-	int		nport;
-	int		nexit;
-	int		nenemy;
-	t_obj	enemy;
-	t_obj	enter;
-	t_obj	exit;
-}	t_map;
-
-typedef struct s_start
-{
-	t_map	map;
-	int		max_x;
-	int		max_y;
-	char	**matrix;
-}	t_start;
-
-#endif
+	str1 = ptr1;
+	str2 = ptr2;
+	while (n--)
+	{
+		if (*str1 != *str2)
+			return (*str1 - *str2);
+		str1++;
+		str2++;
+	}
+	return (0);
+}

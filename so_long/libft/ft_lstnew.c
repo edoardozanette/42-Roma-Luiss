@@ -1,43 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_struct.h                                   :+:      :+:    :+:   */
+/*   ft_lstnew.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 14:59:31 by ezanette          #+#    #+#             */
-/*   Updated: 2024/06/04 17:38:50 by ezanette         ###   ########.fr       */
+/*   Created: 2024/02/15 13:29:13 by ezanette          #+#    #+#             */
+/*   Updated: 2024/02/15 13:29:17 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_STRUCT_H
-# define SO_LONG_STRUCT_H
+#include "libft.h"
 
-typedef struct s_obj
+t_list	*ft_lstnew(void *content)
 {
-	int		x_axis;
-	int		y_axis;
-	int		stat;
-}	t_obj;
+	t_list	*list;
 
-typedef struct s_map
-{
-	int		move;
-	int		ncoin;
-	int		nport;
-	int		nexit;
-	int		nenemy;
-	t_obj	enemy;
-	t_obj	enter;
-	t_obj	exit;
-}	t_map;
-
-typedef struct s_start
-{
-	t_map	map;
-	int		max_x;
-	int		max_y;
-	char	**matrix;
-}	t_start;
-
-#endif
+	list = (t_list *) malloc(sizeof(*list));
+	if (!(list))
+		return (NULL);
+	list -> content = content;
+	list -> next = NULL;
+	return (list);
+}

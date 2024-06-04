@@ -1,43 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_struct.h                                   :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 14:59:31 by ezanette          #+#    #+#             */
-/*   Updated: 2024/06/04 17:38:50 by ezanette         ###   ########.fr       */
+/*   Created: 2024/02/15 13:28:56 by ezanette          #+#    #+#             */
+/*   Updated: 2024/02/15 15:04:44 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_STRUCT_H
-# define SO_LONG_STRUCT_H
+#include "libft.h"
 
-typedef struct s_obj
+void	ft_putnbr_fd(int n, int fd)
 {
-	int		x_axis;
-	int		y_axis;
-	int		stat;
-}	t_obj;
+	long int	num;
 
-typedef struct s_map
-{
-	int		move;
-	int		ncoin;
-	int		nport;
-	int		nexit;
-	int		nenemy;
-	t_obj	enemy;
-	t_obj	enter;
-	t_obj	exit;
-}	t_map;
-
-typedef struct s_start
-{
-	t_map	map;
-	int		max_x;
-	int		max_y;
-	char	**matrix;
-}	t_start;
-
-#endif
+	num = n;
+	if (num == 0)
+	{
+		ft_putchar_fd('0', fd);
+		return ;
+	}
+	if (num < 0)
+	{
+		ft_putchar_fd('-', fd);
+		num = -num;
+	}
+	if (num >= 10)
+		ft_putnbr_fd((num / 10), fd);
+	ft_putchar_fd((num % 10) + '0', fd);
+}

@@ -1,43 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_struct.h                                   :+:      :+:    :+:   */
+/*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 14:59:31 by ezanette          #+#    #+#             */
-/*   Updated: 2024/06/04 17:38:50 by ezanette         ###   ########.fr       */
+/*   Created: 2024/02/09 17:47:13 by ezanette          #+#    #+#             */
+/*   Updated: 2024/02/15 15:45:53 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_STRUCT_H
-# define SO_LONG_STRUCT_H
+#include "libft.h"
 
-typedef struct s_obj
+char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 {
-	int		x_axis;
-	int		y_axis;
-	int		stat;
-}	t_obj;
+	size_t	i;
+	size_t	len;
+	char	*str;
 
-typedef struct s_map
-{
-	int		move;
-	int		ncoin;
-	int		nport;
-	int		nexit;
-	int		nenemy;
-	t_obj	enemy;
-	t_obj	enter;
-	t_obj	exit;
-}	t_map;
-
-typedef struct s_start
-{
-	t_map	map;
-	int		max_x;
-	int		max_y;
-	char	**matrix;
-}	t_start;
-
-#endif
+	i = 0;
+	if (!s)
+		return (NULL);
+	len = ft_strlen(s);
+	str = ft_calloc(len + 1, sizeof(char));
+	if (!str)
+		return (NULL);
+	while (s[i])
+	{
+		str[i] = (*f)(i, (char)s[i]);
+		i++;
+	}
+	str[i] = '\0';
+	return (str);
+}

@@ -1,43 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long_struct.h                                   :+:      :+:    :+:   */
+/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/29 14:59:31 by ezanette          #+#    #+#             */
-/*   Updated: 2024/06/04 17:38:50 by ezanette         ###   ########.fr       */
+/*   Created: 2024/01/11 11:46:36 by ezanette          #+#    #+#             */
+/*   Updated: 2024/01/26 16:50:03 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_STRUCT_H
-# define SO_LONG_STRUCT_H
+#include "libft.h"
 
-typedef struct s_obj
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize)
 {
-	int		x_axis;
-	int		y_axis;
-	int		stat;
-}	t_obj;
+	size_t	c;
+	size_t	i;
 
-typedef struct s_map
-{
-	int		move;
-	int		ncoin;
-	int		nport;
-	int		nexit;
-	int		nenemy;
-	t_obj	enemy;
-	t_obj	enter;
-	t_obj	exit;
-}	t_map;
-
-typedef struct s_start
-{
-	t_map	map;
-	int		max_x;
-	int		max_y;
-	char	**matrix;
-}	t_start;
-
-#endif
+	c = ft_strlen(src);
+	i = 0;
+	if (dstsize != 0)
+	{
+		while (i < (dstsize - 1) && *src != '\0')
+		{
+			*dst++ = *src++;
+			i++;
+		}
+		*dst = '\0';
+	}
+	return (c);
+}
