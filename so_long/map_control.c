@@ -23,6 +23,8 @@ static int	rect_check(char	**map, t_start *mappa)
 	mappa->max_x = ft_strlen(map[y]);
 	while (map[y])
 	{
+		printf("map[y]:%li\nmax_x:%i\n", ft_strlen(map[y]), mappa->max_x);
+		printf("*%s*\n", map[y]);
 		if (ft_strlen(map[y]) != (size_t) mappa->max_x)
 			return (error(1));
 		y++;

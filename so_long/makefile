@@ -3,7 +3,7 @@ CC = gcc
 
 # Compiler flags
 CFLAGS = -Wall -Wextra -Werror
-MFLAGS = -L./mlx -lmlx_Linux -lXext -lX11 -lm -lbsd
+#MFLAGS = -L./mlx -lmlx_Linux -lXext -lX11 -lm -lbsd
 
 # Directories
 LIBFTDIR = ./libft
@@ -19,10 +19,11 @@ NAME = so_long
 all: $(NAME)
 
 %.o: %.c
-	$(CC) $(CFLAGS) -I$(MLXDIR) -I$(LIBFTDIR) -c $< -o $@
+#	$(CC) $(CFLAGS) -I$(MLXDIR) -I$(LIBFTDIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I$(LIBFTDIR) -c $< -o $@
 
 $(NAME): $(OBJS)
-	make -C $(MLXDIR)
+#	make -C $(MLXDIR)
 	make -C $(LIBFTDIR)
 	$(CC) $(OBJS) -L$(LIBFTDIR) -lft $(MFLAGS) -o $(NAME)
 

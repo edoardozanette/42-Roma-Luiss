@@ -26,6 +26,7 @@ int	main(int argc, char **argv)
 	if (str == NULL)
 		return (0);
 	map = ft_split(str, '\n');
+	//printf("mappa:\n%s\n", str);
 	free(str);
 	close(fd);
 	if (check(map, &file, argv[1]) == 0)
