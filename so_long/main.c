@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ezanette <ezanette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:51:36 by ezanette          #+#    #+#             */
-/*   Updated: 2024/06/04 17:59:38 by ezanette         ###   ########.fr       */
+/*   Updated: 2024/09/18 11:52:16 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,11 @@ int	main(int argc, char **argv)
 	if (check(map, &file, argv[1]) == 0)
 	{
 		close_matrix(map);
-        printf("non ok");
 		return (0);
 	}
 	else
 	{
-		//open_window(&file);
-		printf("ok");
+		open_window(&file);
         return (1);
 	}
 }

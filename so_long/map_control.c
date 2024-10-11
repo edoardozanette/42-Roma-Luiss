@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_control.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ezanette <ezanette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/29 15:00:14 by ezanette          #+#    #+#             */
-/*   Updated: 2024/06/04 18:08:33 by ezanette         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:24:05 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,6 @@ static int	rect_check(char	**map, t_start *mappa)
 	mappa->max_x = ft_strlen(map[y]);
 	while (map[y])
 	{
-		printf("map[y]:%li\nmax_x:%i\n", ft_strlen(map[y]), mappa->max_x);
-		printf("*%s*\n", map[y]);
 		if (ft_strlen(map[y]) != (size_t) mappa->max_x)
 			return (error(1));
 		y++;
@@ -90,6 +88,8 @@ static int	check_items(t_start *mappa)
 				mappa->map.nport += 1;
 			else if (mappa->matrix[y][x] == 'E')
 				mappa->map.nexit += 1;
+			else if (mappa->matrix[y][x] == 'N')
+				mappa->map.nenemy += 1;
 			x++;
 		}
 		y++;
@@ -123,7 +123,7 @@ int	check(char **map, t_start *mappa, char *path)
 	mappa->map.nenemy = 0;
 	if (rect_check(map, mappa) && perim_wall_check(mappa)
 		&& check_items(mappa) && check_ber_ext(path)
-		&& check_path(mappa))
+		&& check_path(mappa) && check_char(mappa))
 		return (1);
 	else
 		return (0);

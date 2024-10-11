@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   save_position.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ezanette <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ezanette <ezanette@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/04 17:02:14 by ezanette          #+#    #+#             */
-/*   Updated: 2024/06/04 17:47:26 by ezanette         ###   ########.fr       */
+/*   Updated: 2024/09/17 17:39:21 by ezanette         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@ static void	save_position_struct(t_start *mappa, int y, int x, char type)
 {
 	if (type == 'P')
 	{
+		mappa->map.enter.tile_type = 'P';
 		mappa->map.enter.x_axis = x;
 		mappa->map.enter.y_axis = y;
 	}
 	else if (type == 'E')
 	{
+		mappa->map.exit.tile_type = 'E';
 		mappa->map.exit.x_axis = x;
 		mappa->map.exit.y_axis = y;
 	}
 	else if (type == 'N')
 	{
+		mappa->map.enemy.tile_type = 'N';
 		mappa->map.enemy.x_axis = x;
 		mappa->map.enemy.y_axis = y;
 	}
